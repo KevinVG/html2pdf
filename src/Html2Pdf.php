@@ -1480,7 +1480,11 @@ class Html2Pdf
     protected function _makeBreakLine($h, $curr = null)
     {
         if ($h) {
-            if (($this->pdf->GetY()+$h<$this->pdf->getH() - $this->pdf->getbMargin()) || $this->_isInOverflow || $this->_isInFooter) {
+            $bottomLineHeight = 0;
+            if (isset($this->parsingCss->value['line-height']) && isset($this->parsingCss->value['line-height'])) {
+                $bottomLineHeight = ($this->cssConverter->convertToMM($this->parsingCss->value['line-height']) - $this->cssConverter->convertToMM($this->parsingCss->value['font-size']));
+            }
+            if (( $this->pdf->GetY()+ $h - $bottomLineHeight < $this->pdf->getH() - $this->pdf->getbMargin()) || $this->_isInOverflow || $this->_isInFooter) {
                 $this->_setNewLine($h, $curr);
             } else {
                 $this->_setNewPage(null, '', null, $curr);
