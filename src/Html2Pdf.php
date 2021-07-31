@@ -4278,7 +4278,7 @@ class Html2Pdf
         list($mL, $mR) = $this->_getMargins($this->pdf->GetY());
         $mR = $this->pdf->getW()-$mR;
         $mL+= $this->parsingCss->value['margin']['l']+$this->parsingCss->value['padding']['l'];
-        $mR+= $this->parsingCss->value['margin']['r']+$this->parsingCss->value['padding']['r'];
+        $mR+= $this->parsingCss->value['margin']['r']+$this->parsingCss->value['padding']['r'] - 1;
         $this->_saveMargin($mL, 0, $mR);
 
         if ($this->parsingCss->value['text-indent']>0) {
