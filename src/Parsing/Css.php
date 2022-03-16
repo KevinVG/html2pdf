@@ -43,7 +43,7 @@ class Css
     public $cssKeys      = array(); // css key, for the execution order
     public $table        = array(); // level history
 
-    protected $authorizedSchemes = ['file', 'http', 'https'];
+    protected $authorizedSchemes = ['file', 'http', 'https', 'c'];
 
     /**
      * Constructor
